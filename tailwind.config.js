@@ -51,6 +51,11 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        brand: {
+          light: "#8cc1f2",
+          main: "#0066FF",
+          dark: "#00398e",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -66,10 +71,15 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        marquee: {
+          from: { transform: 'translateX(0) translate3d(0,0,0)' },
+          to: { transform: 'translateX(-50%) translate3d(0,0,0)' }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        marquee: 'marquee var(--duration) linear infinite',
       },
     },
   },

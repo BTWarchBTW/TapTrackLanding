@@ -1,32 +1,21 @@
-"use client"
+'use client';
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import {
-  Check,
-  ChevronRight,
-  Menu,
-  X,
-  Moon,
-  Sun,
-  ArrowRight,
-  Star,
-  Zap,
-  Shield,
-  Users,
-  BarChart,
-  Layers,
-} from "lucide-react"
+import { Brain, ListChecks, Volume2, Timer, Trophy, Check, ChevronRight, Menu, X, Moon, Sun, ArrowRight, Star, Zap, Shield, Users, BarChart, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useTheme } from "next-themes"
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { TestimonialsSection } from "@/components/ui/testimonials-with-marquee"
+import { Squares } from "@/components/ui/squares-background"
 
-export default function LandingPage() {
+export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
@@ -67,41 +56,85 @@ export default function LandingPage() {
 
   const features = [
     {
-      title: "Smart Automation",
-      description: "Automate repetitive tasks and workflows to save time and reduce errors.",
-      icon: <Zap className="size-5" />,
+      title: "Smart Time Tracking",
+      description: "Start and stop timers with one click. Track exactly what you're working on without overthinking it.",
+      icon: <Brain className="size-5" />,
     },
     {
-      title: "Advanced Analytics",
-      description: "Gain valuable insights with real-time data visualization and reporting.",
-      icon: <BarChart className="size-5" />,
+      title: "5/25 To-Do List",
+      description: "Plan your day using Warren Buffett’s 5/25 rule. Focus only on your top 5 tasks that truly matter.",
+      icon: <ListChecks className="size-5" />,
     },
     {
-      title: "Team Collaboration",
-      description: "Work together seamlessly with integrated communication tools.",
+      title: "AI Time Coach",
+      description: "Get daily feedback from AI based on how you spent your time. Know what slowed you down and how to fix it.",
       icon: <Users className="size-5" />,
     },
     {
-      title: "Enterprise Security",
-      description: "Keep your data safe with end-to-end encryption and compliance features.",
-      icon: <Shield className="size-5" />,
+      title: "Productivity Noise",
+      description: "Built-in focus sounds like brown noise, rain, and chants. Perfect for ADHD minds or lazy afternoon hours.",
+      icon: <Volume2 className="size-5" />,
     },
     {
-      title: "Seamless Integration",
-      description: "Connect with your favorite tools through our extensive API ecosystem.",
-      icon: <Layers className="size-5" />,
+      title: "Pomodoro Sessions",
+      description: "Use Pomodoro only when needed. Get into deep focus with longer sessions. No more fake work.",
+      icon: <Timer className="size-5" />,
     },
     {
-      title: "24/7 Support",
-      description: "Get help whenever you need it with our dedicated support team.",
-      icon: <Star className="size-5" />,
+      title: "Gamified Streaks and Goals",
+      description: "Daily goals, task streaks, and achievements that keep you motivated and consistent over time.",
+      icon: <Trophy className="size-5" />,
+    },
+  ]
+  const testimonials = [
+    {
+      quote:
+        "The moment I started tracking my time with TapTrack, everything changed. My deep work doubled, distractions dropped, and I finally feel in control. It’s true. What gets tracked really does get improved.",
+      author: "David G.",
+      role: "Freelance designer",
+      rating: 5,
+      avatar: "/face/david g.png"
+    },
+    {
+      quote:
+        "I used to hustle 10 hours a day but had zero clue where my time went. TapTrack showed me the truth in one week. Turns out I was busy, not productive. Now, every hour is accounted for and I’m finally hitting my goals.",
+      author: "John",
+      role: "Indie founder",
+      rating: 5,
+      avatar: "/face/john.png"
+    },
+    {
+      quote:
+        "Every other tool I tried was bloated and built for corporate teams. I just wanted something clean and focused. TapTrack is like a minimalist beast. No junk, just powerful time tracking that actually works.",
+      author: "Sara",
+      role: "Solopreneur & agency escapee",
+      rating: 5,
+      avatar: "/face/sara.png"
+    },
+    {
+      quote:
+        "I used to write long to-do lists and never finish them. Subconsciously, I’d already given up before starting. TapTrack’s daily top-5 task system literally reprogrammed how I work. I now complete more with less overwhelm.",
+      author: "Placeholder User 1",
+      role: "Student & content creator",
+      rating: 5,
+      avatar: "/placeholder-user.jpg"
+    },
+    {
+      quote:
+        "I always felt ignored by big time tracking apps. They’re built for teams, agencies, and managers. TapTrack is the first tool I’ve used that’s clearly made for me, a one-man army trying to level up.",
+      author: "Placeholder User 2",
+      role: "Indie Hacker",
+      rating: 5,
+      avatar: "/placeholder-user.jpg"
     },
   ]
 
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <header
-        className={`sticky top-0 z-50 w-full backdrop-blur-lg transition-all duration-300 ${isScrolled ? "bg-background/80 shadow-sm" : "bg-transparent"}`}
+        className={`sticky top-0 z-50 w-full backdrop-blur-lg transition-all duration-300 ${
+          isScrolled ? "bg-background/80 shadow-sm" : "bg-transparent"
+        }`}
       >
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2 font-bold">
@@ -217,8 +250,8 @@ export default function LandingPage() {
               <Badge className="mb-4 rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
                 Launching Soon
               </Badge>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
-                Made By Simple People For Simple People
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-white">
+                Made By Simple People For <span className="relative bg-gradient-to-br from-brand-light via-brand-main to-brand-dark bg-clip-text text-transparent">Simple People<span className="absolute -inset-1 -z-10 block animate-pulse bg-gradient-to-br from-brand-light via-brand-main to-brand-dark opacity-30 blur-xl"></span></span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
                 {
@@ -230,9 +263,13 @@ export default function LandingPage() {
                   Get Started
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button size="lg" variant="outline" className="rounded-full h-12 px-8 text-base bg-transparent">
-                  {"Start Free Trial"}
-                </Button>
+                <HoverBorderGradient
+                  containerClassName="rounded-full"
+                  as="button"
+                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+                >
+                  <span>Start Free Trial</span>
+                </HoverBorderGradient>
               </div>
               <div className="flex items-center justify-center gap-4 mt-6 text-sm text-muted-foreground">
                 <div className="flex items-center gap-1">
@@ -273,27 +310,56 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Logos Section */}
-        <section className="w-full py-12 border-y bg-muted/30">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <p className="text-sm font-medium text-muted-foreground">
-                Trusted by freelancers, productivity lovers, and digital workers across the globe.
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Image
-                    key={i}
-                    src={`/placeholder-logo.svg`}
-                    alt={`Company logo ${i}`}
-                    width={120}
-                    height={60}
-                    className="h-8 w-auto opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
-                  />
-                ))}
-              </div>
-            </div>
+        <section className="w-full py-20 md:py-32 relative overflow-hidden">
+          <div className="absolute inset-0 -z-10">
+            <Squares />
           </div>
+          <TestimonialsSection
+        title="Trusted by developers worldwide"
+        description="Join thousands of developers who are already building the future with our AI platform."
+        testimonials={[
+          {
+            author: {
+              name: "AshuRex",
+              handle: "@ashurex",
+              avatar: "/face/AshuRex.png",
+            },
+            text: "This platform has revolutionized my workflow. The AI capabilities are unmatched!",
+          },
+          {
+            author: {
+              name: "Free Man",
+              handle: "@freeman",
+              avatar: "/face/Free Man.png",
+            },
+            text: "I've never seen such a powerful and intuitive AI tool. Highly recommended!",
+          },
+          {
+            author: {
+              name: "rosalinecopper",
+              handle: "@rosalinecopper",
+              avatar: "/face/rosalinecopper.jpg",
+            },
+            text: "The best AI platform for developers, hands down. It's a game-changer!",
+          },
+          {
+            author: {
+              name: "rykhan316",
+              handle: "@rykhan316",
+              avatar: "/face/rykhan316.png",
+            },
+            text: "Absolutely incredible! This platform has boosted my productivity significantly.",
+          },
+          {
+            author: {
+              name: "sara",
+              handle: "@sara",
+              avatar: "/face/sara.png",
+            },
+            text: "A must-have for any developer looking to leverage AI. Fantastic features!",
+          },
+        ]}
+      />
         </section>
 
         {/* What TapTrack Is Section */}
@@ -603,9 +669,9 @@ export default function LandingPage() {
               <Badge className="rounded-full px-4 py-1.5 text-sm font-medium" variant="secondary">
                 How It Works
               </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Simple Process, Powerful Results</h2>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Stop Guessing. Start Knowing.</h2>
               <p className="max-w-[800px] text-muted-foreground md:text-lg">
-                Get started in minutes and see the difference our platform can make for your business.
+                Unlock your productivity potential. TapTrack gives you the clarity to focus on what truly matters.
               </p>
             </motion.div>
 
@@ -615,18 +681,18 @@ export default function LandingPage() {
               {[
                 {
                   step: "01",
-                  title: "Create Account",
-                  description: "Sign up in seconds with just your email. No credit card required to get started.",
+                  title: "Plan Your Day",
+                  description: "Start by creating your to-do list and blocking out time for your most important tasks. Get focused before you even begin.",
                 },
                 {
                   step: "02",
-                  title: "Configure Workspace",
-                  description: "Customize your workspace to match your team's unique workflow and requirements.",
+                  title: "Track Your Time",
+                  description: "As you work, track your time with a single click. No complicated setup, just pure focus on the task at hand.",
                 },
                 {
                   step: "03",
-                  title: "Boost Productivity",
-                  description: "Start using our powerful features to streamline processes and achieve your goals.",
+                  title: "Analyze & Improve",
+                  description: "See exactly where your time goes. Our AI-powered insights help you identify distractions and optimize your workflow.",
                 },
               ].map((step, i) => (
                 <motion.div
@@ -671,45 +737,51 @@ export default function LandingPage() {
               {[
                 {
                   quote:
-                    "SaaSify has transformed how we manage our projects. The automation features have saved us countless hours of manual work.",
-                  author: "Sarah Johnson",
-                  role: "Project Manager, TechCorp",
+                    "The moment I started tracking my time with TapTrack, everything changed. My deep work doubled, distractions dropped, and I finally feel in control. It’s true. What gets tracked really does get improved.",
+                  author: "Anya Sharma",
+                  role: "Freelance designer",
                   rating: 5,
+                  avatar: "/placeholder-user.jpg"
                 },
                 {
                   quote:
-                    "The analytics dashboard provides insights we never had access to before. It's helped us make data-driven decisions that have improved our ROI.",
-                  author: "Michael Chen",
-                  role: "Marketing Director, GrowthLabs",
+                    "I used to hustle 10 hours a day but had zero clue where my time went. TapTrack showed me the truth in one week. Turns out I was busy, not productive. Now, every hour is accounted for and I’m finally hitting my goals.",
+                  author: "Ethan Vance",
+                  role: "Indie founder",
                   rating: 5,
+                  avatar: "/face/john.png"
                 },
                 {
                   quote:
-                    "Customer support is exceptional. Any time we've had an issue, the team has been quick to respond and resolve it. Couldn't ask for better service.",
-                  author: "Emily Rodriguez",
-                  role: "Operations Lead, StartupX",
+                    "Every other tool I tried was bloated and built for corporate teams. I just wanted something clean and focused. TapTrack is like a minimalist beast. No junk, just powerful time tracking that actually works.",
+                  author: "Liam O'Connell",
+                  role: "Solopreneur & agency escapee",
                   rating: 5,
+                  avatar: "/placeholder-user.jpg"
                 },
                 {
                   quote:
-                    "We've tried several similar solutions, but none compare to the ease of use and comprehensive features of SaaSify. It's been a game-changer.",
-                  author: "David Kim",
-                  role: "CEO, InnovateNow",
+                    "I used to write long to-do lists and never finish them. Subconsciously, I’d already given up before starting. TapTrack’s daily top-5 task system literally reprogrammed how I work. I now complete more with less overwhelm.",
+                  author: "Noah Fischer",
+                  role: "Student & content creator",
                   rating: 5,
+                  avatar: "/face/david g.png"
                 },
                 {
                   quote:
-                    "The collaboration tools have made remote work so much easier for our team. We're more productive than ever despite being spread across different time zones.",
-                  author: "Lisa Patel",
-                  role: "HR Director, RemoteFirst",
+                    "I always felt ignored by big time tracking apps. They’re built for teams, agencies, and managers. TapTrack is the first tool I’ve used that’s clearly made for me, a one-man army trying to level up.",
+                  author: "Chloe Dubois",
+                  role: "Indie Hacker",
                   rating: 5,
+                  avatar: "/face/sara.png"
                 },
                 {
                   quote:
-                    "Implementation was seamless, and the ROI was almost immediate. We've reduced our operational costs by 30% since switching to SaaSify.",
-                  author: "James Wilson",
-                  role: "COO, ScaleUp Inc",
+                    "Time tracking used to feel like a chore. Too many buttons, too many steps. TapTrack made it so simple. One click, I’m tracking. No clutter, no load. Exactly how it should be.",
+                  author: "Isabella Rossi",
+                  role: "Side-hustler",
                   rating: 5,
+                  avatar: "/placeholder-user.jpg"
                 },
               ].map((testimonial, i) => (
                 <motion.div
@@ -730,7 +802,13 @@ export default function LandingPage() {
                       <p className="text-lg mb-6 flex-grow">{testimonial.quote}</p>
                       <div className="flex items-center gap-4 mt-auto pt-4 border-t border-border/40">
                         <div className="size-10 rounded-full bg-muted flex items-center justify-center text-foreground font-medium">
-                          {testimonial.author.charAt(0)}
+                          <Image
+                            src={testimonial.avatar || "/placeholder-user.jpg"}
+                            alt={testimonial.author}
+                            width={40}
+                            height={40}
+                            className="size-10 rounded-full object-cover"
+                          />
                         </div>
                         <div>
                           <p className="font-medium">{testimonial.author}</p>
@@ -967,10 +1045,10 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="w-full py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground relative overflow-hidden">
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-          <div className="absolute -top-24 -left-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <section className="w-full py-20 md:py-32 text-primary-foreground relative overflow-hidden">
+          <div className="absolute inset-0 -z-10">
+            <Squares />
+          </div>
 
           <div className="container px-4 md:px-6 relative">
             <motion.div
@@ -979,27 +1057,27 @@ export default function LandingPage() {
               transition={{ duration: 0.5 }}
               className="flex flex-col items-center justify-center space-y-6 text-center"
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight">
-                Your hours are limited. Make every one count.
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+                Your hours are limited. <span className="relative bg-gradient-to-br from-brand-light via-brand-main to-brand-dark bg-clip-text text-transparent">Make every one count.<span className="absolute -inset-1 -z-10 block animate-pulse bg-gradient-to-br from-brand-light via-brand-main to-brand-dark opacity-30 blur-xl"></span></span>
               </h2>
-              <p className="mx-auto max-w-[700px] text-primary-foreground/80 md:text-xl">
+              <p className="mx-auto max-w-[700px] text-white/80 md:text-xl">
                 Know where you're spending time. Spot your lazy hours. Listen to productivity sounds. Do Pomodoros based
                 on activity blocks and let AI guide you to stack wins daily.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <Button size="lg" variant="secondary" className="rounded-full h-12 px-8 text-base">
-                  {"Get Started "}
+                <Button size="lg" className="rounded-full h-12 px-8 text-base">
+                  Get Started
                   <ArrowRight className="ml-2 size-4" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="rounded-full h-12 px-8 text-base bg-transparent border-white text-white hover:bg-white/10"
+                <HoverBorderGradient
+                  containerClassName="rounded-full"
+                  as="button"
+                  className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
                 >
-                  Free Trial
-                </Button>
+                  <span>Free Trial</span>
+                </HoverBorderGradient>
               </div>
-              <p className="text-sm text-primary-foreground/80 mt-4">
+              <p className="text-sm text-white/80 mt-4">
                 No credit card required. 3-day free trial. Cancel anytime.
               </p>
             </motion.div>
